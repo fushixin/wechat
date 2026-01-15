@@ -1,4 +1,4 @@
-package io.gitee.wechat;
+package io.github.wechat;
 
 
 import cn.hutool.json.JSONObject;
