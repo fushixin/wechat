@@ -8,12 +8,12 @@
 <dependency>
     <groupId>io.github.fushixin</groupId>
     <artifactId>wechat</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
 部署
-
+gt
 ```cmd
 mvn clean deploy -P release
 ```
