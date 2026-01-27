@@ -22,7 +22,7 @@ public interface WechatServiceAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/cgi-bin/token")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/token")
     JSONObject getAccessToken(Map<String, String> header,  Map<String, Object> query);
 
     /**
@@ -51,7 +51,7 @@ public interface WechatServiceAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/cgi-bin/get_api_domain_ip")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/get_api_domain_ip")
     JSONObject getApiDomainIp(Map<String, String> header,  Map<String, Object> query);
 
     /**
@@ -60,7 +60,7 @@ public interface WechatServiceAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/cgi-bin/getcallbackip")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/getcallbackip")
     JSONObject getCallbackIp(Map<String, String> header,  Map<String, Object> query);
 
     // ========== 用户信息 ==========
@@ -81,10 +81,10 @@ public interface WechatServiceAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/cgi-bin/user/get")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/user/get")
     JSONObject getFans(Map<String, String> header,  Map<String, Object> query);
 
-    // ========== 模板消息 ==========
+    // ========== 基础消息与订阅通知 / 模板消息 ==========
 
     /**
      * <a href="https://developers.weixin.qq.com/doc/service/api/notify/template/api_sendtemplatemessage.html">发送模板消息</a>
@@ -96,7 +96,17 @@ public interface WechatServiceAPI {
     @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/cgi-bin/message/template/send")
     JSONObject sendTemplateMessage(Map<String, String> header,  Map<String, Object> query, Map<String, Object> body);
 
-    // ========== 网页授权 ==========
+    /**
+     * <a href="https://developers.weixin.qq.com/doc/service/api/notify/template/api_addtemplate.html">选用模板</a>
+     *
+     * @param query 查询参数
+     * @param body  请求体
+     * @return 返回体
+     */
+    @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/cgi-bin/template/api_add_template")
+    JSONObject addTemplate(Map<String, String> header,  Map<String, Object> query, Map<String, Object> body);
+
+    // ========== 网页开发 / 网页授权 ==========
 
     /**
      * <a href="https://developers.weixin.qq.com/doc/service/api/webdev/access/api_snsaccesstoken.html">换取用户授权凭证</a>
@@ -104,7 +114,34 @@ public interface WechatServiceAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/sns/oauth2/access_token")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/sns/oauth2/access_token")
     JSONObject snsAccessToken(Map<String, String> header,  Map<String, Object> query);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/doc/service/api/webdev/access/api_snsauth.html">检验用户授权凭证</a>
+     *
+     * @param query 查询参数
+     * @return 返回体
+     */
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/sns/auth")
+    JSONObject snsAuth(Map<String, String> header,  Map<String, Object> query);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/doc/service/api/webdev/access/api_snsuserinfo.html">获取授权用户信息</a>
+     *
+     * @param query 查询参数
+     * @return 返回体
+     */
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/sns/userinfo")
+    JSONObject snsUserInfo(Map<String, String> header,  Map<String, Object> query);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/doc/service/api/webdev/access/api_snsrefreshtoken.html">刷新用户授权凭证</a>
+     *
+     * @param query 查询参数
+     * @return 返回体
+     */
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/sns/oauth2/refresh_token")
+    JSONObject snsRefreshToken(Map<String, String> header,  Map<String, Object> query);
 
 }

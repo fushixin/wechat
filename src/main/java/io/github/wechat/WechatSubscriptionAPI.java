@@ -22,7 +22,7 @@ public interface WechatSubscriptionAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/cgi-bin/token")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/token")
     JSONObject getAccessToken(Map<String, String> header, Map<String, Object> query);
 
     /**
@@ -51,7 +51,7 @@ public interface WechatSubscriptionAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/cgi-bin/get_api_domain_ip")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/get_api_domain_ip")
     JSONObject getApiDomainIp(Map<String, String> header, Map<String, Object> query);
 
     /**
@@ -60,7 +60,7 @@ public interface WechatSubscriptionAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/cgi-bin/getcallbackip")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/getcallbackip")
     JSONObject getCallbackIp(Map<String, String> header, Map<String, Object> query);
 
     // ========== openApi管理 ==========
@@ -133,7 +133,7 @@ public interface WechatSubscriptionAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info")
     JSONObject getCurrentSelfmenuInfo(Map<String, String> header, Map<String, Object> query);
 
     /**
@@ -142,7 +142,7 @@ public interface WechatSubscriptionAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/cgi-bin/menu/get")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/menu/get")
     JSONObject getMenu(Map<String, String> header, Map<String, Object> query);
 
     /**
@@ -151,7 +151,7 @@ public interface WechatSubscriptionAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/cgi-bin/menu/delete")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/menu/delete")
     JSONObject deleteMenu(Map<String, String> header, Map<String, Object> query);
 
     /**

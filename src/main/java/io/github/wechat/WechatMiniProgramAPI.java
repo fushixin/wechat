@@ -23,7 +23,7 @@ public interface WechatMiniProgramAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/cgi-bin/token")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/token")
     JSONObject getAccessToken(Map<String, String> header, Map<String, Object> query);
 
     /**
@@ -104,7 +104,7 @@ public interface WechatMiniProgramAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/cgi-bin/get_api_domain_ip")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/get_api_domain_ip")
     JSONObject getApiDomainIp(Map<String, String> header, Map<String, Object> query);
 
     /**
@@ -113,7 +113,7 @@ public interface WechatMiniProgramAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/cgi-bin/getcallbackip")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/getcallbackip")
     JSONObject getCallbackIp(Map<String, String> header, Map<String, Object> query);
 
     // ========== 用户信息 / 用户信息 ==========
@@ -144,7 +144,7 @@ public interface WechatMiniProgramAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/wxa/getpaidunionid")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/wxa/getpaidunionid")
     JSONObject getPaidUnionid(Map<String, String> header, Map<String, Object> query);
 
     // ========== 用户信息 / 网络 ==========
@@ -155,7 +155,7 @@ public interface WechatMiniProgramAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/wxa/business/getuserencryptkey")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/wxa/business/getuserencryptkey")
     JSONObject getUserEncryptKey(Map<String, String> header, Map<String, Object> query);
 
     // ========== 用户信息 / 手机号 ==========
@@ -178,7 +178,7 @@ public interface WechatMiniProgramAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/sns/jscode2session")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/sns/jscode2session")
     JSONObject code2Session(Map<String, String> header, Map<String, Object> query);
 
     /**
@@ -187,7 +187,7 @@ public interface WechatMiniProgramAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/wxa/checksession")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/wxa/checksession")
     JSONObject checkSessionKey(Map<String, String> header, Map<String, Object> query);
 
     /**
@@ -196,7 +196,7 @@ public interface WechatMiniProgramAPI {
      * @param query 查询参数
      * @return 返回体
      */
-    @API(api = "https://api.weixin.qq.com/wxa/resetusersessionkey")
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/wxa/resetusersessionkey")
     JSONObject ResetUserSessionKey(Map<String, String> header, Map<String, Object> query);
 
     // ========== 小程序码与小程序链接 / 小程序码 ==========
@@ -296,5 +296,206 @@ public interface WechatMiniProgramAPI {
      */
     @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/wxa/genwxashortlink")
     JSONObject generateShortLink(Map<String, String> header, Map<String, Object> query, Map<String, Object> body);
+
+    // ========== 小程序客服 / 客服消息 ==========
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/kf-mgnt/kf-message/api_getmedia.html">获取临时素材</a>
+     *
+     * @param query 查询参数
+     * @return 返回体
+     */
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/media/get")
+    JSONObject getMedia(Map<String, String> header, Map<String, Object> query);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/kf-mgnt/kf-message/api_typing.html">客服输入状态</a>
+     *
+     * @param query 查询参数
+     * @param body  请求体
+     * @return 返回体
+     */
+    @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/cgi-bin/message/custom/business/typing")
+    JSONObject typing(Map<String, String> header, Map<String, Object> query, Map<String, Object> body);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/kf-mgnt/kf-message/api_uploadtempmedia.html">新增临时素材</a>
+     *
+     * @param query 查询参数
+     * @param body  请求体
+     * @return 返回体
+     */
+    @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/cgi-bin/media/upload")
+    JSONObject uploadTempMedia(Map<String, String> header, Map<String, Object> query, Map<String, Object> body);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/kf-mgnt/kf-message/api_sendcustommessage.html">发送客服消息</a>
+     *
+     * @param query 查询参数
+     * @param body  请求体
+     * @return 返回体
+     */
+    @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/cgi-bin/message/custom/send")
+    JSONObject sendCustomMessage(Map<String, String> header, Map<String, Object> query, Map<String, Object> body);
+
+    // ========== 微信客服 ==========
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/kf-work/api_getkfworkbound.html">查询绑定情况</a>
+     *
+     * @param query 查询参数
+     * @return 返回体
+     */
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/customservice/work/get")
+    JSONObject getKfWorkBound(Map<String, String> header, Map<String, Object> query);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/kf-work/api_bindkfwork.html">绑定微信客服</a>
+     *
+     * @param query 查询参数
+     * @param body  请求体
+     * @return 返回体
+     */
+    @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/customservice/work/bind")
+    JSONObject bindKfWork(Map<String, String> header, Map<String, Object> query, Map<String, Object> body);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/kf-work/api_unbindkfwork.html">解除绑定微信客服</a>
+     *
+     * @param query 查询参数
+     * @param body  请求体
+     * @return 返回体
+     */
+    @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/customservice/work/unbind")
+    JSONObject unbindKfWork(Map<String, String> header, Map<String, Object> query, Map<String, Object> body);
+
+    // ========== 消息相关 / 动态消息 ==========
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/mp-message-management/updatable-message/api_createactivityid.html">创建activity_id</a>
+     *
+     * @param query 查询参数
+     * @return 返回体
+     */
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/cgi-bin/message/wxopen/activityid/create")
+    JSONObject createActivityId(Map<String, String> header, Map<String, Object> query);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/mp-message-management/updatable-message/api_setupdatablemsg.html">修改动态消息</a>
+     *
+     * @param query 查询参数
+     * @param body  请求体
+     * @return 返回体
+     */
+    @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/cgi-bin/message/wxopen/updatablemsg/send")
+    JSONObject setUpdatableMsg(Map<String, String> header, Map<String, Object> query, Map<String, Object> body);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/mp-message-management/updatable-message/api_setchattoolmsg.html">修改小程序聊天工具的动态卡片消息</a>
+     *
+     * @param query 查询参数
+     * @param body  请求体
+     * @return 返回体
+     */
+    @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/cgi-bin/message/wxopen/chattoolmsg/send")
+    JSONObject setChatToolMsg(Map<String, String> header, Map<String, Object> query, Map<String, Object> body);
+
+    // ========== 消息相关 / 订阅消息 ==========
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/mp-message-management/subscribe-message/api_delwxanewtemplate.html">删除模板</a>
+     *
+     * @param query 查询参数
+     * @param body  请求体
+     * @return 返回体
+     */
+    @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/wxaapi/newtmpl/deltemplate")
+    JSONObject delwxanewtemplate(Map<String, String> header, Map<String, Object> query, Map<String, Object> body);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/mp-message-management/subscribe-message/api_getcategory.html">获取类目</a>
+     *
+     * @param query 查询参数
+     * @return 返回体
+     */
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/wxaapi/newtmpl/getcategory")
+    JSONObject getCategory(Map<String, String> header, Map<String, Object> query);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/mp-message-management/subscribe-message/api_getpubnewtemplatekeywords.html">获取模板中的关键词</a>
+     *
+     * @param query 查询参数
+     * @return 返回体
+     */
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/wxaapi/newtmpl/getpubtemplatekeywords")
+    JSONObject getpubnewtemplatekeywords(Map<String, String> header, Map<String, Object> query);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/mp-message-management/subscribe-message/api_getpubnewtemplatetitles.html">获取类目下的公共模板</a>
+     *
+     * @param query 查询参数
+     * @return 返回体
+     */
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/wxaapi/newtmpl/getpubtemplatetitles")
+    JSONObject getPubNewTemplatetitles(Map<String, String> header, Map<String, Object> query);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/mp-message-management/subscribe-message/api_getwxapubnewtemplate.html">获取已有模板列表</a>
+     *
+     * @param query 查询参数
+     * @return 返回体
+     */
+    @API(method = HttpMethod.GET, api = "https://api.weixin.qq.com/wxaapi/newtmpl/gettemplate")
+    JSONObject getwxapubnewtemplate(Map<String, String> header, Map<String, Object> query);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/mp-message-management/subscribe-message/api_sendmessage.html">发送订阅消息</a>
+     *
+     * @param query 查询参数
+     * @param body  请求体
+     * @return 返回体
+     */
+    @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/cgi-bin/message/subscribe/send")
+    JSONObject sendMessage(Map<String, String> header, Map<String, Object> query, Map<String, Object> body);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/mp-message-management/subscribe-message/api_addwxanewtemplate.html">选用模板</a>
+     *
+     * @param query 查询参数
+     * @param body  请求体
+     * @return 返回体
+     */
+    @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/wxaapi/newtmpl/addtemplate")
+    JSONObject addwxanewtemplate(Map<String, String> header, Map<String, Object> query, Map<String, Object> body);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/mp-message-management/subscribe-message/api_setusernotify.html">激活与更新服务卡片</a>
+     *
+     * @param query 查询参数
+     * @param body  请求体
+     * @return 返回体
+     */
+    @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/wxa/set_user_notify")
+    JSONObject setUserNotify(Map<String, String> header, Map<String, Object> query, Map<String, Object> body);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/mp-message-management/subscribe-message/api_setusernotifyext.html">更新服务卡片扩展信息</a>
+     *
+     * @param query 查询参数
+     * @param body  请求体
+     * @return 返回体
+     */
+    @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/wxa/set_user_notifyext")
+    JSONObject setUserNotifyExt(Map<String, String> header, Map<String, Object> query, Map<String, Object> body);
+
+    /**
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/server/API/mp-message-management/subscribe-message/api_getusernotify.html">查询服务卡片状态</a>
+     *
+     * @param query 查询参数
+     * @param body  请求体
+     * @return 返回体
+     */
+    @API(method = HttpMethod.POST, api = "https://api.weixin.qq.com/wxa/get_user_notify")
+    JSONObject getUserNotify(Map<String, String> header, Map<String, Object> query, Map<String, Object> body);
 
 }
